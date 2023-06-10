@@ -7,6 +7,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+//goland:noinspection GoUnusedExportedFunction
 func InitGinPackage(devMode bool) {
 	gin.DefaultWriter = log.Logger.Level(zerolog.TraceLevel)
 	gin.DefaultErrorWriter = log.Logger.Level(zerolog.ErrorLevel)
@@ -17,6 +18,7 @@ func InitGinPackage(devMode bool) {
 	}
 }
 
+//goland:noinspection GoUnusedExportedFunction
 func NewGin() *gin.Engine {
 	router := gin.New()
 	router.ContextWithFallback = true

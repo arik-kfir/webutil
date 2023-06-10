@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+//goland:noinspection GoUnusedExportedFunction
 func ConfigureGinCORS(
 	router *gin.Engine,
 	allowedOrigins []string,
