@@ -1,0 +1,23 @@
+name: Verify
+
+on:
+  push:
+
+defaults:
+  run:
+    shell: bash -euxo pipefail {0}
+
+jobs:
+
+  verify:
+    name: Verify
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        go-version: [ 'oldstable', 'stable' ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: ${{ matrix.go-version }}
+      - run: go test ./...
