@@ -31,3 +31,8 @@ jobs:
           TEST_AUTH0_DOMAIN: ${{ secrets.TEST_AUTH0_DOMAIN }}
       - uses: codecov/codecov-action@v3
         if: always()
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.txt
+          flags: unittests
+          fail_ci_if_error: true
