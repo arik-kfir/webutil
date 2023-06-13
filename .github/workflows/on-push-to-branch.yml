@@ -20,9 +20,14 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version: ${{ matrix.go-version }}
-      - run: go test ./...
+      - run: go mod download
+      - run: go vet .
+      - run: go test -v -vet=off -race -shuffle ${SHUFFLE_SEED} -coverprofile=coverage.txt -covermode=atomic .
         env:
+          SHUFFLE_SEED: ${{ github.run_number }}
           TEST_AUTH0_AUDIENCE: ${{ secrets.TEST_AUTH0_AUDIENCE }}
           TEST_AUTH0_CLIENT_ID: ${{ secrets.TEST_AUTH0_CLIENT_ID }}
           TEST_AUTH0_CLIENT_SECRET: ${{ secrets.TEST_AUTH0_CLIENT_SECRET }}
           TEST_AUTH0_DOMAIN: ${{ secrets.TEST_AUTH0_DOMAIN }}
+      - uses: codecov/codecov-action@v3
+        if: always()
