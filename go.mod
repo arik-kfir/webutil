@@ -5,12 +5,14 @@ go 1.20
 replace github.com/secureworks/errors => github.com/arik-kfir/errors v0.0.2
 
 require (
+	github.com/99designs/gqlgen v0.17.32
 	github.com/auth0/go-jwt-middleware/v2 v2.1.0
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-contrib/requestid v0.0.6
 	github.com/gin-gonic/gin v1.9.1
 	github.com/rs/zerolog v1.29.1
 	github.com/secureworks/errors v0.1.2
+	github.com/vektah/gqlparser/v2 v2.5.3
 )
 
 require (
